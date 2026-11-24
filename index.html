@@ -486,6 +486,23 @@ table.tot tr.sum td{font-weight:700;background:var(--cream)}
 .tgrid .pf img{height:auto}
 .walks{display:grid!important;width:100%!important;grid-template-columns:1fr!important;max-width:1100px!important;gap:40px!important}.walk.vid{width:100%;max-width:none!important}.walk.vid .play{width:110px;height:110px}.walk.vid h3{font-size:clamp(1.5rem,2.6vw,2.1rem)}.walk.vid .cap{padding:28px 34px 34px}
 .intro{background:#fff}.introvid{max-width:900px;margin:0 auto;aspect-ratio:4/3;border-radius:18px;overflow:hidden;box-shadow:0 18px 50px rgba(43,31,31,.14);background:#EADBD7}.introvid iframe{width:100%;height:100%;border:0;display:block}.introalt{text-align:center;margin-top:20px;font-size:.95rem}.introalt a{color:var(--rose);font-weight:600}
+
+.story{padding-bottom:250px}
+.intro{padding-top:0;background:#fff;position:relative;z-index:3}.intro .wrap{display:flow-root}
+.introvid{margin-top:-170px;position:relative;z-index:4;max-width:900px;box-shadow:0 30px 70px rgba(43,31,31,.22)}
+.introtxt{margin-top:56px;margin-bottom:0}
+.introtxt .introalt{margin-top:18px;font-size:.95rem}
+@media(max-width:900px){.story{padding-bottom:170px}.introvid{margin-top:-110px}}
+/* scroll animations */
+@keyframes heroIn{from{opacity:0;translate:0 30px}to{opacity:1;translate:0 0}}
+.hero2 .pl{animation:heroIn 1s .1s both cubic-bezier(.2,.7,.2,1)}
+.hero2 .pr{animation:heroIn 1s .3s both cubic-bezier(.2,.7,.2,1)}
+.hero2 .card{animation:heroIn 1s .5s both cubic-bezier(.2,.7,.2,1)}
+.rv{opacity:0;translate:0 38px;transition:opacity .9s cubic-bezier(.2,.7,.2,1),translate .9s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0ms);will-change:opacity,translate}
+.rv.rv-l{translate:-44px 0}.rv.rv-r{translate:44px 0}
+.rv.in{opacity:1;translate:0 0}
+.rv-img{scale:.96;transition-property:opacity,translate,scale}.rv-img.in{scale:1}
+@media(prefers-reduced-motion:reduce){.rv,.rv-img{opacity:1!important;translate:none!important;scale:none!important;transition:none!important}.hero2 .pl,.hero2 .pr,.hero2 .card{animation:none}}
 </style>
 </head>
 <body>
@@ -538,12 +555,12 @@ table.tot tr.sum td{font-weight:700;background:var(--cream)}
 </div></section>
 
 <section id="intro" class="intro"><div class="wrap">
-    <div class="sec-top">
+    <div class="introvid" id="introvid"><iframe src="https://www.loom.com/embed/595e5713a88f4b89a0c676395edb1bec?hide_owner=true&amp;hide_share=true&amp;hide_title=true&amp;hideEmbedTopBar=true" title="Senior Paid Media Buyer | Meet Anca" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    <div class="sec-top introtxt">
       <span class="label" style="display:block;margin-bottom:16px">A quick hello</span><h2>Hi, I'm Anca. <em>Let me introduce myself.</em></h2>
       <p>A three-minute look at how I work, what I've built and the kind of team I'd love to join.</p>
+      <p class="introalt"><a href="https://www.loom.com/share/595e5713a88f4b89a0c676395edb1bec" target="_blank" rel="noopener">Video not loading? Watch it on Loom &rarr;</a></p>
     </div>
-    <div class="introvid" id="introvid"><iframe src="https://www.loom.com/embed/595e5713a88f4b89a0c676395edb1bec?hide_owner=true&amp;hide_share=true&amp;hide_title=true&amp;hideEmbedTopBar=true" title="Senior Paid Media Buyer | Meet Anca" allow="fullscreen; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-    <p class="introalt"><a href="https://www.loom.com/share/595e5713a88f4b89a0c676395edb1bec" target="_blank" rel="noopener">Video not loading? Watch it on Loom &rarr;</a></p>
   </div></section>
 <script>try{if(/claude\.(ai|site)|anthropic/i.test(location.hostname)){var v=document.getElementById('introvid');v.innerHTML='<a href="https://www.loom.com/share/595e5713a88f4b89a0c676395edb1bec" target="_blank" rel="noopener" style="display:grid;place-items:center;width:100%;height:100%;text-decoration:none;color:#fff;background:linear-gradient(135deg,#8A5A57,#C4ABAA);text-align:center"><span><span style="display:grid;place-items:center;width:96px;height:96px;border-radius:50%;background:#fff;margin:0 auto 18px"><svg viewBox="0 0 24 24" width="34" height="34" fill="#8A5A57" style="margin-left:5px"><path d="M6 4l14 8-14 8z"/></svg></span><b style="font-family:Georgia,serif;font-size:1.5rem;font-weight:400">Watch my introduction</b><br><small style="letter-spacing:.14em;text-transform:uppercase;font-size:.75rem">3 min &middot; opens on Loom</small></span></a>';}}catch(e){}</script>
 <section id="what">
@@ -1026,5 +1043,29 @@ document.querySelectorAll('.zoom').forEach(function(b){b.addEventListener('click
 lb.addEventListener('click',function(){lb.classList.remove('on')});
 document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('on')});})();
 </script>
+<script>(function(){
+try{
+if(window.matchMedia&&matchMedia('(prefers-reduced-motion:reduce)').matches)return;
+if(!('IntersectionObserver' in window))return;
+var C='.tgrid,.fgrid,.walks,.ai-grid,.three,.gets,.best,.numbers .wrap,.meet,.cgrid,.logos';
+var xp=document.querySelector('.xp');var cont=Array.prototype.slice.call(document.querySelectorAll(C));
+if(xp&&xp.parentElement)cont.push(xp.parentElement);
+var isC=function(e){return cont.indexOf(e)>-1};
+var list=[];
+document.querySelectorAll('section:not(.hero) .wrap > *, .numbers .wrap > *, .logostrip').forEach(function(e){if(!isC(e))list.push(e)});
+cont.forEach(function(c){var k=0;Array.prototype.forEach.call(c.children,function(ch){ch.style.setProperty('--d',(k%5)*90+'ms');k++;list.push(ch)})});
+var seen=[];
+list=list.filter(function(e){if(seen.indexOf(e)>-1)return false;seen.push(e);return true});
+list=list.filter(function(e){var p=e.parentElement;while(p){if(list.indexOf(p)>-1)return false;p=p.parentElement}return true});
+var io=new IntersectionObserver(function(en){en.forEach(function(x){if(x.isIntersecting){x.target.classList.add('in');io.unobserve(x.target)}})},{threshold:.12,rootMargin:'0px 0px -6% 0px'});
+list.forEach(function(e){
+ if(e.id==='introvid'||e.closest('#introvid'))return;
+ e.classList.add('rv');
+ if(e.matches('.meet-ph,.fgrid>*,.tgrid>*,.walks>*,.bq,img,figure'))e.classList.add('rv-img');
+ if(e.parentElement&&e.parentElement.classList.contains('meet')){e.classList.add(e===e.parentElement.firstElementChild?'rv-l':'rv-r')}
+ io.observe(e)});
+var v=document.getElementById('introvid');if(v){v.classList.add('rv','rv-img');io.observe(v)}
+}catch(err){document.querySelectorAll('.rv').forEach(function(e){e.classList.add('in')})}
+})();</script>
 </body>
 </html>
